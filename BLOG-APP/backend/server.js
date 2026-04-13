@@ -38,8 +38,7 @@ const connectDB = async () => {
         await connect(process.env.DB_URL)
         console.log("Server is connected to DB")
         // Assign port
-        const port = process.env.PORT || 5000
-        app.listen(port, () => console.log(`Server listening on ${port}..`))
+        
     } 
     catch (err) 
     {
@@ -48,6 +47,10 @@ const connectDB = async () => {
 }
 
 connectDB()
+const port = process.env.PORT || 5000
+app.listen(port, () => console.log(`Server listening on ${port}..`))
+
+export default app;
 
 // To handle invalid path
 app.use((req, res, next) => {
