@@ -47,7 +47,7 @@ function Register() {
     try {
       setLoading(true);
       //Make http req to create user in backend
-      let res = await axios.post("http://localhost:4000/auth/users", formData, {
+      let res = await axios.post("https://my-project-blog-app2.vercel.app/auth/users", formData, {
         withCredentials: true,
       });
       if (res.status === 201) {
