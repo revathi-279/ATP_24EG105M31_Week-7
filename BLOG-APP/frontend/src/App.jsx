@@ -84,7 +84,7 @@ function App() {
 
         {
           path: "article/:id",
-          element: <ArticleByID />,
+          element: <ArticleById/>,
         },
         {
           path: "edit-article",
