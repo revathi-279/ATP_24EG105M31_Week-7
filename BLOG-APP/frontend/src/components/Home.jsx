@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
   return (
     <div className='text-center mt-18'>
-      <h4 className='text-4xl text-purple-900 mb-10'>Welcome to the BLOG APP</h4>
+      <h4 className='text-4xl text-purple-900 mb-10'>Welcome to the Blog App</h4>
       <p> 
         In the rapidly evolving world of software development, yesterday’s breakthrough is today’s standard. 
       This platform is built for developers who believe that sharing logic is just as important as writing it. 
