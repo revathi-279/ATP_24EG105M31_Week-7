@@ -99,7 +99,7 @@ function UserProfile() {
 
         {/* LOGOUT */}
         <button
-          className="bg-[#ff3b30] text-white text-sm px-5 py-2 rounded-full hover:bg-[#d62c23] transition"
+          className="bg-purple-500 text-white text-sm px-5 py-2 rounded-full hover:bg-purple-700 transition"
           onClick={onLogout}
         >
           Logout
