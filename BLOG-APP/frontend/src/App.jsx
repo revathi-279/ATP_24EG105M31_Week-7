@@ -1,9 +1,9 @@
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import AdminProfile from "./components/AdminProfile"; 
-import ArticleByID from "./components/ArticleByID";
 import Articles from "./components/Articles"; 
 import AuthorArticles from "./components/AuthorArticles";
+import ArticleById from "./components/ArticleById";
 import AuthorProfile from "./components/AuthorProfile";
 import EditArticle from "./components/EditArticle";
 import Home from "./components/Home";
