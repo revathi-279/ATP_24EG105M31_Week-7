@@ -19,7 +19,7 @@ function Articles() {
     try {
       setLoading(true);
       let res = await axios.get(
-        "http://localhost:4000/admin-api/articles",
+        "https://my-project-blog-app2.vercel.app/admin-api/articles",
         { withCredentials: true }
       );
 
@@ -40,7 +40,7 @@ function Articles() {
   const toggleArticleStatus = async (articleObj) => {
     try {
       let res = await axios.patch(
-        "http://localhost:4000/admin-api/article-status",
+        "https://my-project-blog-app2.vercel.app/admin-api/article-status",
         {
           articleId: articleObj._id,
           isArticleActive: !articleObj.isArticleActive,
