@@ -50,7 +50,6 @@ function ArticleById() {
 
       try {
 
-        const res = await axios.get(`https://my-project-blog-app2.vercel.app/user-api/article/${id}`, { withCredentials: true });
         const res = await axios.get(`https://blog-backend-5afx.onrender.com/user-api/article/${id}`, { withCredentials: true })
 
         setArticle(res.data.payload);
