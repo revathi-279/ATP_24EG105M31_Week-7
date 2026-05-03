@@ -14,7 +14,7 @@ const app = exp()
 
 //Enable CORS
 app.use(cors({
-  origin: "*",
+  origin: "https://blogapp-git-main-blog-app2.vercel.app/",
   credentials:true                // Enables to send the tokens back to the client
 }))
 
