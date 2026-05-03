@@ -49,7 +49,7 @@ function ArticleById() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`https://my-project-blog-app2.vercel.app/user-api/article/${id}`, { withCredentials: true });
+        const res = await axios.get(`https://blog-backend-5afx.onrender.com/user-api/article/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -79,7 +79,7 @@ function ArticleById() {
 
     try {
       const res = await axios.patch(
-        "http://localhost:4000/author-api/articles",
+        "https://blog-backend-5afx.onrender.com/author-api/articles",
         { articleId: article._id, isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -112,7 +112,7 @@ function ArticleById() {
     //add artcileId
     commentObj.articleId = article._id;
     console.log(commentObj);
-    let res = await axios.put("http://localhost:4000/user-api/articles", commentObj, { withCredentials: true });
+    let res = await axios.put("https://blog-backend-5afx.onrender.com/user-api/articles", commentObj, { withCredentials: true });
     if (res.status === 200) {
       // toast.success(res.data.message);
       setArticle(res.data.payload);

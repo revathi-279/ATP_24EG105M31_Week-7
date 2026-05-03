@@ -14,17 +14,9 @@ const app = exp()
 
 //Enable CORS
 app.use(cors({
-<<<<<<< HEAD
-  origin: true,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-=======
-  origin:['http://localhost:5173'],
+  origin: "*",
   credentials:true                // Enables to send the tokens back to the client
 }))
->>>>>>> edb66a9 (Week-7 BlogApp)
 
 // Cookie parser middleware
 app.use(cookieParser())
@@ -46,7 +38,8 @@ const connectDB = async () => {
         await connect(process.env.DB_URL)
         console.log("Server is connected to DB")
         // Assign port
-        
+        const port = process.env.PORT || 5000
+        app.listen(port, () => console.log(`Server listening on ${port}..`))
     } 
     catch (err) 
     {
@@ -55,10 +48,6 @@ const connectDB = async () => {
 }
 
 connectDB()
-const port = process.env.PORT || 5000
-app.listen(port, () => console.log(`Server listening on ${port}..`))
-
-export default app;
 
 // To handle invalid path
 app.use((req, res, next) => {
