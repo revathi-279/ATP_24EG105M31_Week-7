@@ -19,7 +19,7 @@ function Articles() {
     try {
       setLoading(true);
       let res = await axios.get(
-        "https://blog-backend-5afx.onrender.com/admin-api/articles",
+        "https://blog-backend-5afx.onrender.com/admin-api/articles",   //Connect backend url 
         { withCredentials: true }
       );
 
