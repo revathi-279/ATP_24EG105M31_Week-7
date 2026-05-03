@@ -14,7 +14,7 @@ const app = exp()
 
 //Enable CORS
 app.use(cors({
-  origin:['http://localhost:5173'],
+  origin: "*",
   credentials:true                // Enables to send the tokens back to the client
 }))
 
