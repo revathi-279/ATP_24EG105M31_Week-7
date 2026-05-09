@@ -54,7 +54,7 @@ function ArticleById() {
 
         setArticle(res.data.payload);
       } catch (err) {
-        setError(err.response?.data?.error);
+      setError(err.response?.data?.message || "Failed to fetch article");
       } finally {
         setLoading(false);
       }
@@ -143,7 +143,7 @@ function ArticleById() {
       <div className={articleContent}>{article.content}</div>
 
       {/* AUTHOR actions */}
-      {user?.role === "AUTHOR" && (
+      {user?.role === "AUTHOR" && (user.id === article.author || user.id === article.author?._id) && (
         <div className={articleActions}>
           <button className={editBtn} onClick={() => editArticle(article)}>
             Edit

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate, useParams } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 
@@ -19,8 +19,9 @@ function EditArticle() {
   const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
+  const [fetchedArticle, setFetchedArticle] = useState(null);
 
-  const article = location.state;
+const article = location.state
 
   const {
     register,
@@ -31,24 +32,55 @@ function EditArticle() {
 
   // prefill form
   useEffect(() => {
-    if (!article) return;
 
-     setValue("title", article.title);
-     setValue("category", article.category);
-     setValue("content", article.content);
-  }, [article]);
+  const loadArticle = async () => {
+
+    // article came from navigate state
+    if (article) {
+      setValue("title", article.title);
+      setValue("category", article.category);
+      setValue("content", article.content);
+      setFetchedArticle(article);
+      return;
+    }
+
+    // refresh case
+    try {
+      let res = await axios.get(
+        `https://blog-backend-5afx.onrender.com/user-api/article/${id}`,
+        { withCredentials: true }
+      );
+
+      const data = res.data.payload;
+
+      setFetchedArticle(data);
+
+      setValue("title", data.title);
+      setValue("category", data.category);
+      setValue("content", data.content);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  loadArticle();
+
+}, [article, id]);
 
   const updateArticle = async (modifiedArticle) => {
   
     //add articleId to modified article
-    modifiedArticle.articleId = article._id;
+  modifiedArticle.articleId = fetchedArticle._id;
     //make PUT req to update article
     let res=await axios.put("https://blog-backend-5afx.onrender.com/author-api/articles",
       modifiedArticle,
       {withCredentials:true})
     //naviagte to articleById component
     if(res.status===200){
-    navigate(`/article/${article._id}`,{state:res.data.payload})
+   navigate(`/article/${fetchedArticle._id}`, {
+  state: res.data.payload
+})
    }
   };
 
